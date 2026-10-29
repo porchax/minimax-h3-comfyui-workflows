@@ -1,0 +1,22 @@
+subject_definitions:
+The only main subject is the young adult man in the supplied opening photograph, seated in his office chair. Preserve his individual facial identity, natural age, short dark hair, eye shape, nose, jawline, light facial stubble and charcoal-grey crew-neck sweatshirt throughout. The opening image is the actual first frame and establishes the initial pose, framing, lighting, chair and office wall.
+
+summary:
+[keyframe completion] A continuous ten-second portrait smartphone selfie video. Begin exactly from the supplied photograph: the man is seated in the chair, filming himself with a front-facing phone camera held at arm's length. He stands up and walks through the office while continuing to film his own face. Behind him the office is chaotic: coworkers hurry and run between desks, and loose sheets of paper fly and flutter through the air. He stays calmly focused on his selfie.
+
+retention_analysis:
+Opening photograph: preserve the man's facial identity, hairstyle, stubble, sweatshirt and the opening shot composition. The first frame must match the supplied photograph. Continue naturally from this seated position; do not replace the man with a similar-looking person.
+
+detailed_description:
+[Shot 1] One uninterrupted first-person front-camera selfie take, ten seconds long, in portrait orientation. The camera is the phone in the man's hand, looking back at his face; it is never an external camera watching him hold a phone.
+From 00:00 to 00:01.000, begin in the exact seated pose and close selfie composition of the opening photograph, with the same chair and branded office wall behind him. Preserve his neutral, relaxed expression and visible upper body. Only subtle breathing and a natural blink.
+From 00:01.000 to 00:03.000, he rises naturally from the chair while keeping the phone at arm's length. The camera rises with his hand and body, with a small realistic handheld tilt and bounce. His face stays in view and in focus. The chair moves behind him; this is a physical stand-up motion, not a camera cut or a change of location.
+From 00:03.000 to 00:09.000, he walks forward several steps through the same open-plan office, continuously recording a close arm's-length selfie. Keep his face and grey sweatshirt consistent. The background opens onto desks, office chairs, monitors and a passage between workstations. Behind him several adult coworkers in ordinary office clothing move hurriedly and run between desks. Loose white paper sheets visibly flutter and swirl through the air behind his shoulders, with natural falling and tumbling motion. The office feels hectic and busy, contrasting with his calm, mildly amused expression. Coworkers remain background people and do not replace or duplicate the main man. Papers and people do not cover his face or the camera lens.
+From 00:09.000 to 00:10.000, continue walking and filming the same man in the same continuous take. Maintain the background rush and airborne papers without a cut or a freeze. His face remains the clear foreground subject.
+Camera and identity constraints: realistic smartphone front-camera perspective and gentle walking sway, with the man dominant in the foreground. No third-person view, detached camera, aerial shot, mirror shot, sudden zoom, teleportation, scene cut or identity change. No duplicate main man, extra limbs, distorted hands or melting facial features. Keep the same sweatshirt throughout. Preserve the opening wall signage where naturally visible, without introducing subtitles, phone UI, timestamps, title cards, watermarks or new overlay text. The first frame is the source photograph; subsequent movement must grow continuously from it.
+
+overall_soundscape:
+Natural office room tone, chair movement as he stands, footsteps, hurried background footsteps and soft paper rustling. No intelligible speech, no narration and no dialogue from the man.
+
+non_diegetic_music:
+None. Do not add music.

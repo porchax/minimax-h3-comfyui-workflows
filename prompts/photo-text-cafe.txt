@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the single adult blonde woman in <Picture 1>. This photograph is the primary reference for her facial identity: preserve her face shape, eye shape and spacing, nose, lips, skin tone and natural age. Use her recognizable individual features rather than a generic beautified face. The photograph is an appearance reference, not a required first frame. Do not copy its pose, background, grey beanie, scarf or outerwear.
+
+summary:
+[reference generation] A realistic, uninterrupted five-second landscape portrait video of <Subject 1> sitting in a quiet daylight cafe. She looks toward the camera, makes a small natural head turn, and gives a gentle smile. Her blonde hair is uncovered and she wears a plain charcoal-grey crew-neck sweater.
+
+retention_analysis:
+<Picture 1>: attribute_transfer — the woman's facial identity, natural age, skin tone and blonde hair only. Exclude the beanie, outerwear, source pose and background.
+
+detailed_description:
+[Shot 1] One continuous eye-level medium close-up, framed from the chest up. <Subject 1> sits upright at a cafe table in soft window daylight. From 00:00 to 00:01.5 she looks calmly toward the camera with a relaxed neutral expression. From 00:01.5 to 00:03.5 she slowly turns her head a little to her left and returns her gaze toward the camera, with one natural blink. From 00:03.5 to the end she forms a small warm closed-mouth smile and holds it. Keep the movement subtle and physically natural. Her face remains fully visible and in focus throughout. Keep the facial structure, eye color, nose, jawline and age consistent with <Picture 1> in every frame. Her long blonde hair rests naturally over her shoulders, with no headwear. The plain charcoal-grey sweater stays unchanged. The background is a softly out-of-focus cafe with neutral wood tones and daylight; no other prominent people. The camera is fixed, with no cuts, zooms, pans or transitions. Preserve realistic skin texture without glamour retouching or exaggerated smoothing. No talking, exaggerated expressions, sudden gestures, objects crossing the face, text, phone interface, subtitles, logos or watermarks.
+
+overall_soundscape:
+Quiet natural cafe room tone only. No speech and no intelligible voices.
+
+non_diegetic_music:
+None. Do not add music.

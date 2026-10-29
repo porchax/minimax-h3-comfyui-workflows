@@ -1,0 +1,1172 @@
+{
+  "id": "e3f2b845-8f2c-4b5a-9caf-eac1029d3e7e",
+  "revision": 0,
+  "last_node_id": 1011,
+  "last_link_id": 25,
+  "nodes": [
+    {
+      "id": 92,
+      "type": "SaveVideo",
+      "pos": [
+        2800,
+        450
+      ],
+      "size": [
+        1380,
+        970
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/EXP002_CharacterSwap_RefMax",
+        "mp4",
+        "h264"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/MiniMax_H3",
+        "format": "auto",
+        "codec": "auto"
+      },
+      "title": "7 · СОХРАНИТЬ MP4"
+    },
+    {
+      "id": 115,
+      "type": "ResolutionSelector",
+      "pos": [
+        420,
+        600
+      ],
+      "size": [
+        270,
+        170
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "title": "4 · ФОРМАТ И РАЗРЕШЕНИЕ · совпадает с исходником",
+      "properties": {
+        "Node name for S&R": "ResolutionSelector"
+      },
+      "widgets_values": [
+        "16:9 (Widescreen)",
+        0.4,
+        32
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "16:9 (Widescreen)",
+        "megapixels": 0.4,
+        "multiple": 32
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 119,
+      "type": "VAELoader",
+      "pos": [
+        520,
+        1100
+      ],
+      "size": [
+        640,
+        70
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            2,
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+      }
+    },
+    {
+      "id": 120,
+      "type": "VAELoader",
+      "pos": [
+        520,
+        1250
+      ],
+      "size": [
+        650,
+        70
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      }
+    },
+    {
+      "id": 122,
+      "type": "VAEDecode",
+      "pos": [
+        2350,
+        450
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 21
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 123,
+      "type": "KSamplerSelect",
+      "pos": [
+        1000,
+        800
+      ],
+      "size": [
+        370,
+        70
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "er_sde"
+      ],
+      "widgets_values_named": {
+        "sampler_name": "res_multistep"
+      }
+    },
+    {
+      "id": 124,
+      "type": "BasicScheduler",
+      "pos": [
+        1450,
+        650
+      ],
+      "size": [
+        370,
+        130
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "beta57",
+        8,
+        1
+      ],
+      "widgets_values_named": {
+        "scheduler": "simple",
+        "steps": 20,
+        "denoise": 1
+      },
+      "title": "5 · СЭМПЛИНГ ИЗ AIHUB · beta57 / 8 шагов"
+    },
+    {
+      "id": 125,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1900,
+        450
+      ],
+      "size": [
+        230,
+        140
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 16
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 17
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 18
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 19
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            21
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 126,
+      "type": "BasicGuider",
+      "pos": [
+        1450,
+        450
+      ],
+      "size": [
+        360,
+        60
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      }
+    },
+    {
+      "id": 127,
+      "type": "UNETLoader",
+      "pos": [
+        0,
+        1100
+      ],
+      "size": [
+        640,
+        90
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            13,
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "10Eros_Max_h3_TURBO-hybrid_beta5.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 128,
+      "type": "CLIPLoader",
+      "pos": [
+        0,
+        1250
+      ],
+      "size": [
+        640,
+        120
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 129,
+      "type": "RandomNoise",
+      "pos": [
+        1000,
+        650
+      ],
+      "size": [
+        360,
+        90
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        42,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "noise_seed": 261662374822964,
+        "control_after_generate": "randomize"
+      }
+    },
+    {
+      "id": 130,
+      "type": "CreateVideo",
+      "pos": [
+        2350,
+        650
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 23
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24,
+        8
+      ],
+      "widgets_values_named": {
+        "fps": 24,
+        "bit_depth": 8
+      },
+      "title": "6 · СБОРКА · 24 FPS + исходный звук"
+    },
+    {
+      "id": 136,
+      "type": "MiniMaxH3ReferenceToVideo",
+      "pos": [
+        1000,
+        0
+      ],
+      "size": [
+        400,
+        380
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 2
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 1
+        },
+        {
+          "label": "ref_image_0",
+          "name": "ref_images.ref_image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "label": "ref_image_1",
+          "name": "ref_images.ref_image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "label": "ref_image_2",
+          "name": "ref_images.ref_image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "label": "ref_video_0",
+          "name": "ref_videos.ref_video_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "label": "ref_video_audio_0",
+          "name": "ref_video_audios.ref_video_audio_0",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 8
+        },
+        {
+          "label": "ref_audio_0",
+          "name": "ref_audios.ref_audio_0",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 10
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 11
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 12
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo"
+      },
+      "widgets_values": [
+        "",
+        480,
+        864,
+        124,
+        "max"
+      ],
+      "widgets_values_named": {
+        "prompt": "",
+        "width": 1344,
+        "height": 768,
+        "length": 124,
+        "ref_image_size": "match"
+      },
+      "title": "H3 · фото + исходное видео + исходный звук"
+    },
+    {
+      "id": 137,
+      "type": "LoadImage",
+      "pos": [
+        0,
+        650
+      ],
+      "size": [
+        290,
+        330
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "character-beanie.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "red_superboy_on_city_roof.png",
+        "upload": "image"
+      },
+      "title": "2 · ФОТО ПЕРСОНАЖА · Picture 1"
+    },
+    {
+      "id": 138,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        420,
+        0
+      ],
+      "size": [
+        520,
+        520
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "title": "3 · ПРОМПТ · роли фото, видео и звука",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "subject_definitions:\n<Subject 1> is the adult blonde woman in <Picture 1>, the photograph where she wears a grey beanie. This is the highest-priority facial identity reference: preserve her face shape, eyes, nose, lips and skin tone. Do not copy the beanie, coat, scarf or outerwear. Her blonde hair is uncovered in the output, with its length and appearance supported by <Picture 2> and <Picture 3>.\n<Picture 2> shows the same woman standing in a red dress and is a supplementary physical-appearance and blonde-hair reference only. It must not override the primary face from <Picture 1>.\n<Picture 3> shows the same woman in profile and is a supplementary facial structure reference only. Do not copy the glass, restaurant, clothing or phone interface.\nAll photographs define appearance only. Their poses, expressions, lighting, backgrounds, clothes and screenshot overlays are excluded.\n<Video 1> defines the source performance, movement, timing, camera, framing, clothing, environment and lighting.\n<Audio 1> is the synchronized soundtrack from <Video 1>.\n\nsummary:\n[video editing + reference generation + audio reuse] Replace the main person in <Video 1> with <Subject 1>. Keep the source action, camera, composition, wardrobe, background and lighting.\n\nretention_analysis:\n<Picture 1>: attribute_transfer — primary facial identity only, excluding headwear and clothing.\n<Picture 2>: attribute_transfer — supplementary physical appearance and blonde hair only.\n<Picture 3>: attribute_transfer — supplementary profile structure only.\n<Video 1>: partially_preserved — replace the main person's identity while preserving the performance and scene.\n<Audio 1>: fully_copy — preserve the synchronized source soundtrack.\n\ndetailed_description:\n[Shot 1] One uninterrupted landscape talk-show shot. Replace only the seated brunette guest with <Subject 1>, maintaining the blonde woman's facial identity and naturally loose blonde hair in every frame. Follow the supplied segment of <Video 1> throughout: the woman talks and gestures with both hands, smiles, briefly leans forward while laughing, then straightens and continues her animated explanation. Preserve the exact source timing, head turns, eye direction, hand gestures and mouth movement. Keep the source black thin-strap dress and necklace, the chair, night city backdrop, studio furniture, camera position and lighting. The woman remains seated and visible from the first frame; do not add a reveal or cut. Do not reproduce the original brunette's face, bangs or dark hair. Do not transfer the red dress, beanie, coat, wine glass, restaurant or backgrounds from the photos. Keep any other people unchanged. Preserve natural anatomy, stable facial features and consistent clothing. Do not introduce extra people, text, subtitles, logos, phone status bars or watermarks.\n\noverall_soundscape:\nPreserve <Audio 1> synchronized with the source performance.\n\nnon_diegetic_music:\nKeep any existing source music unchanged. Do not add music.\n"
+      ],
+      "widgets_values_named": {
+        "value": "Bold comic-book ink style, heavy linework, red and blue-black palette, night city. Use <Picture 2> and <Picture 1> as reference frames and <Audio 1> exactly as it is.\nCUT 1: top-down view of the little boy superhero on the rooftop — red cape fluttering in the wind, hands planted on his hips, freckles and a cocky grin as he looks straight up into the camera. The camera slowly descends toward him as he delivers his line — as he speaks, comic-book graphic overlay text word by word in sync with his voice: \"GET READY TO\" - \"MEET\" — \"YOUR\" — \"MAKER\" — huge jagged comic lettering, white with heavy black outlines and red drop shadows, tilted at scrappy angles, until the three words hang stacked in the air above him between his face and the lens.\nTRANSITION: a violent WHIP PAN off the rooftop that SMEARS the floating words away with it, motion-streaked —\nCUT 2: low hero angle on the colossal black mech-kaiju towering over the skyline as it rears back and unleashes a GIANT terrifying ROAR — jaws wide with fangs, red eyes and chest-core flaring blinding bright, blue lightning arcing off its head, the roar's shockwave rippling dust and rattling windows down the buildings, comic-style speed-lines and ink splatter bursting from the impact of the sound. It leans INTO the camera as the roar peaks. Hold on the roar."
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 1011,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        410,
+        334
+      ],
+      "flags": {
+        "collapsed": false,
+        "disabled": false
+      },
+      "order": 180,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "meta_batch",
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "label": "force_rate",
+          "name": "force_rate",
+          "type": "INT",
+          "widget": {
+            "name": "force_rate"
+          },
+          "link": null
+        },
+        {
+          "label": "frame_load_cap",
+          "name": "frame_load_cap",
+          "type": "INT",
+          "widget": {
+            "name": "frame_load_cap"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        },
+        {
+          "label": "frame_count",
+          "name": "frame_count",
+          "type": "INT",
+          "links": [
+            9
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            8,
+            24
+          ]
+        },
+        {
+          "label": "video_info",
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "source-test.mp4",
+        "force_rate": 24,
+        "force_size": "Disabled",
+        "custom_width": 0,
+        "custom_height": 0,
+        "frame_load_cap": 124,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "None"
+      },
+      "color": "#283449",
+      "bgcolor": "#354762",
+      "title": "1 · ИСХОДНОЕ ВИДЕО · 24 FPS · первые 5 секунд"
+    },
+    {
+      "id": 723,
+      "type": "LoadImage",
+      "pos": [
+        0,
+        1500
+      ],
+      "size": [
+        300.79998779296875,
+        314.0000305175781
+      ],
+      "flags": {
+        "collapsed": false,
+        "disabled": false
+      },
+      "order": 60,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "title": "ДОПОЛНИТЕЛЬНОЕ ФОТО · Picture 2",
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "character-red-dress.jpg",
+        "image"
+      ],
+      "color": "#247D91",
+      "bgcolor": "#152C34"
+    },
+    {
+      "id": 727,
+      "type": "LoadImage",
+      "pos": [
+        420,
+        1500
+      ],
+      "size": [
+        300.79998779296875,
+        314
+      ],
+      "flags": {
+        "collapsed": false,
+        "disabled": false
+      },
+      "order": 59,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "title": "ДОПОЛНИТЕЛЬНОЕ ФОТО · Picture 3",
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "character-profile.jpg",
+        "image"
+      ],
+      "color": "#247D91",
+      "bgcolor": "#152C34"
+    }
+  ],
+  "links": [
+    [
+      1,
+      120,
+      0,
+      136,
+      2,
+      "VAE"
+    ],
+    [
+      2,
+      119,
+      0,
+      136,
+      1,
+      "VAE"
+    ],
+    [
+      3,
+      128,
+      0,
+      136,
+      0,
+      "CLIP"
+    ],
+    [
+      4,
+      137,
+      0,
+      136,
+      3,
+      "IMAGE"
+    ],
+    [
+      5,
+      723,
+      0,
+      136,
+      4,
+      "IMAGE"
+    ],
+    [
+      6,
+      727,
+      0,
+      136,
+      5,
+      "IMAGE"
+    ],
+    [
+      7,
+      1011,
+      0,
+      136,
+      6,
+      "IMAGE"
+    ],
+    [
+      8,
+      1011,
+      2,
+      136,
+      7,
+      "AUDIO"
+    ],
+    [
+      9,
+      1011,
+      1,
+      136,
+      12,
+      "INT"
+    ],
+    [
+      10,
+      138,
+      0,
+      136,
+      9,
+      "STRING"
+    ],
+    [
+      11,
+      115,
+      0,
+      136,
+      10,
+      "INT"
+    ],
+    [
+      12,
+      115,
+      1,
+      136,
+      11,
+      "INT"
+    ],
+    [
+      13,
+      127,
+      0,
+      124,
+      0,
+      "MODEL"
+    ],
+    [
+      14,
+      127,
+      0,
+      126,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      136,
+      0,
+      126,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      129,
+      0,
+      125,
+      0,
+      "NOISE"
+    ],
+    [
+      17,
+      126,
+      0,
+      125,
+      1,
+      "GUIDER"
+    ],
+    [
+      18,
+      123,
+      0,
+      125,
+      2,
+      "SAMPLER"
+    ],
+    [
+      19,
+      124,
+      0,
+      125,
+      3,
+      "SIGMAS"
+    ],
+    [
+      20,
+      136,
+      1,
+      125,
+      4,
+      "LATENT"
+    ],
+    [
+      21,
+      125,
+      0,
+      122,
+      0,
+      "LATENT"
+    ],
+    [
+      22,
+      119,
+      0,
+      122,
+      1,
+      "VAE"
+    ],
+    [
+      23,
+      122,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      24,
+      1011,
+      2,
+      130,
+      1,
+      "AUDIO"
+    ],
+    [
+      25,
+      130,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.65,
+      "offset": [
+        60,
+        100
+      ]
+    }
+  },
+  "version": 0.4
+}

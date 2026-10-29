@@ -1,0 +1,1170 @@
+{
+  "id": "e3f2b845-8f2c-4b5a-9caf-eac1029d3e7e",
+  "revision": 0,
+  "last_node_id": 205,
+  "last_link_id": 27,
+  "nodes": [
+    {
+      "id": 92,
+      "type": "SaveVideo",
+      "pos": [
+        3700,
+        650
+      ],
+      "size": [
+        1380,
+        970
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/photo-text/PT002_OfficeSelfie_Chaos_10s",
+        "mp4",
+        "h264"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/MiniMax_H3",
+        "format": "auto",
+        "codec": "auto"
+      },
+      "title": "7 · СОХРАНИТЬ MP4"
+    },
+    {
+      "id": 119,
+      "type": "VAELoader",
+      "pos": [
+        520,
+        1100
+      ],
+      "size": [
+        640,
+        70
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            3,
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+      }
+    },
+    {
+      "id": 120,
+      "type": "VAELoader",
+      "pos": [
+        520,
+        1250
+      ],
+      "size": [
+        650,
+        70
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      }
+    },
+    {
+      "id": 122,
+      "type": "VAEDecode",
+      "pos": [
+        2350,
+        450
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 2
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21,
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 123,
+      "type": "KSamplerSelect",
+      "pos": [
+        1000,
+        800
+      ],
+      "size": [
+        370,
+        70
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "er_sde"
+      ],
+      "widgets_values_named": {
+        "sampler_name": "res_multistep"
+      }
+    },
+    {
+      "id": 124,
+      "type": "BasicScheduler",
+      "pos": [
+        1450,
+        650
+      ],
+      "size": [
+        370,
+        130
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "beta57",
+        8,
+        1
+      ],
+      "widgets_values_named": {
+        "scheduler": "simple",
+        "steps": 20,
+        "denoise": 1
+      },
+      "title": "5 · СЭМПЛИНГ ИЗ AIHUB · beta57 / 8 шагов"
+    },
+    {
+      "id": 125,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1900,
+        450
+      ],
+      "size": [
+        230,
+        140
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 5
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 6
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 7
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            2,
+            18
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 126,
+      "type": "BasicGuider",
+      "pos": [
+        1450,
+        450
+      ],
+      "size": [
+        360,
+        60
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      }
+    },
+    {
+      "id": 127,
+      "type": "UNETLoader",
+      "pos": [
+        0,
+        1100
+      ],
+      "size": [
+        640,
+        90
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            4,
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "10Eros_Max_h3_TURBO-hybrid_beta5.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 128,
+      "type": "CLIPLoader",
+      "pos": [
+        0,
+        1250
+      ],
+      "size": [
+        640,
+        120
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 129,
+      "type": "RandomNoise",
+      "pos": [
+        1000,
+        650
+      ],
+      "size": [
+        360,
+        90
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        42,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "noise_seed": 261662374822964,
+        "control_after_generate": "randomize"
+      }
+    },
+    {
+      "id": 130,
+      "type": "CreateVideo",
+      "pos": [
+        3250,
+        650
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24,
+        8
+      ],
+      "widgets_values_named": {
+        "fps": 24,
+        "bit_depth": 8
+      },
+      "title": "ФИНАЛ · 240 кадров · 24 FPS · 10 секунд"
+    },
+    {
+      "id": 137,
+      "type": "LoadImage",
+      "pos": [
+        0,
+        650
+      ],
+      "size": [
+        290,
+        330
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            20
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pt002-office-source.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "red_superboy_on_city_roof.png",
+        "upload": "image"
+      },
+      "title": "ИСХОДНОЕ ФОТО · первый кадр"
+    },
+    {
+      "id": 138,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        420,
+        0
+      ],
+      "size": [
+        520,
+        520
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "title": "3 · ПРОМПТ · роли фото, видео и звука",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "subject_definitions:\nThe only main subject is the young adult man in the supplied opening photograph, seated in his office chair. Preserve his individual facial identity, natural age, short dark hair, eye shape, nose, jawline, light facial stubble and charcoal-grey crew-neck sweatshirt throughout. The opening image is the actual first frame and establishes the initial pose, framing, lighting, chair and office wall.\n\nsummary:\n[keyframe completion] A continuous ten-second portrait smartphone selfie video. Begin exactly from the supplied photograph: the man is seated in the chair, filming himself with a front-facing phone camera held at arm's length. He stands up and walks through the office while continuing to film his own face. Behind him the office is chaotic: coworkers hurry and run between desks, and loose sheets of paper fly and flutter through the air. He stays calmly focused on his selfie.\n\nretention_analysis:\nOpening photograph: preserve the man's facial identity, hairstyle, stubble, sweatshirt and the opening shot composition. The first frame must match the supplied photograph. Continue naturally from this seated position; do not replace the man with a similar-looking person.\n\ndetailed_description:\n[Shot 1] One uninterrupted first-person front-camera selfie take, ten seconds long, in portrait orientation. The camera is the phone in the man's hand, looking back at his face; it is never an external camera watching him hold a phone.\nFrom 00:00 to 00:01.000, begin in the exact seated pose and close selfie composition of the opening photograph, with the same chair and branded office wall behind him. Preserve his neutral, relaxed expression and visible upper body. Only subtle breathing and a natural blink.\nFrom 00:01.000 to 00:03.000, he rises naturally from the chair while keeping the phone at arm's length. The camera rises with his hand and body, with a small realistic handheld tilt and bounce. His face stays in view and in focus. The chair moves behind him; this is a physical stand-up motion, not a camera cut or a change of location.\nFrom 00:03.000 to 00:09.000, he walks forward several steps through the same open-plan office, continuously recording a close arm's-length selfie. Keep his face and grey sweatshirt consistent. The background opens onto desks, office chairs, monitors and a passage between workstations. Behind him several adult coworkers in ordinary office clothing move hurriedly and run between desks. Loose white paper sheets visibly flutter and swirl through the air behind his shoulders, with natural falling and tumbling motion. The office feels hectic and busy, contrasting with his calm, mildly amused expression. Coworkers remain background people and do not replace or duplicate the main man. Papers and people do not cover his face or the camera lens.\nFrom 00:09.000 to 00:10.000, continue walking and filming the same man in the same continuous take. Maintain the background rush and airborne papers without a cut or a freeze. His face remains the clear foreground subject.\nCamera and identity constraints: realistic smartphone front-camera perspective and gentle walking sway, with the man dominant in the foreground. No third-person view, detached camera, aerial shot, mirror shot, sudden zoom, teleportation, scene cut or identity change. No duplicate main man, extra limbs, distorted hands or melting facial features. Keep the same sweatshirt throughout. Preserve the opening wall signage where naturally visible, without introducing subtitles, phone UI, timestamps, title cards, watermarks or new overlay text. The first frame is the source photograph; subsequent movement must grow continuously from it.\n\noverall_soundscape:\nNatural office room tone, chair movement as he stands, footsteps, hurried background footsteps and soft paper rustling. No intelligible speech, no narration and no dialogue from the man.\n\nnon_diegetic_music:\nNone. Do not add music.\n"
+      ],
+      "widgets_values_named": {
+        "value": "Bold comic-book ink style, heavy linework, red and blue-black palette, night city. Use <Picture 2> and <Picture 1> as reference frames and <Audio 1> exactly as it is.\nCUT 1: top-down view of the little boy superhero on the rooftop — red cape fluttering in the wind, hands planted on his hips, freckles and a cocky grin as he looks straight up into the camera. The camera slowly descends toward him as he delivers his line — as he speaks, comic-book graphic overlay text word by word in sync with his voice: \"GET READY TO\" - \"MEET\" — \"YOUR\" — \"MAKER\" — huge jagged comic lettering, white with heavy black outlines and red drop shadows, tilted at scrappy angles, until the three words hang stacked in the air above him between his face and the lens.\nTRANSITION: a violent WHIP PAN off the rooftop that SMEARS the floating words away with it, motion-streaked —\nCUT 2: low hero angle on the colossal black mech-kaiju towering over the skyline as it rears back and unleashes a GIANT terrifying ROAR — jaws wide with fangs, red eyes and chest-core flaring blinding bright, blue lightning arcing off its head, the roar's shockwave rippling dust and rattling windows down the buildings, comic-style speed-lines and ink splatter bursting from the impact of the sound. It leans INTO the camera as the roar peaks. Hold on the roar."
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 121,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        2350,
+        900
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 18
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            24,
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "title": "H3 · НАТИВНЫЙ ЗВУК"
+    },
+    {
+      "id": 136,
+      "type": "MiniMaxH3ImageToVideo",
+      "title": "H3 · ПЕРВЫЙ КАДР = ФОТО",
+      "pos": [
+        1000,
+        0
+      ],
+      "size": [
+        420,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ImageToVideo"
+      },
+      "widgets_values": [
+        "",
+        576,
+        768,
+        243
+      ],
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        },
+        {
+          "name": "first_frame",
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "name": "last_frame",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 16,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "type": "ImageScale",
+      "title": "Фото → размер видео",
+      "pos": [
+        450,
+        650
+      ],
+      "size": [
+        400,
+        160
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "lanczos",
+        576,
+        768,
+        "disabled"
+      ],
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "id": 201,
+      "type": "ImageFromBatch",
+      "title": "Кадры 1–239",
+      "pos": [
+        2300,
+        650
+      ],
+      "size": [
+        400,
+        160
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "ImageFromBatch"
+      },
+      "widgets_values": [
+        1,
+        239
+      ],
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "type": "ImageBatch",
+      "title": "Исходное фото в кадр 0",
+      "pos": [
+        2750,
+        650
+      ],
+      "size": [
+        400,
+        160
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": [],
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 22
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "type": "TrimAudioDuration",
+      "title": "Звук: ровно 10 секунд",
+      "pos": [
+        2300,
+        1050
+      ],
+      "size": [
+        400,
+        160
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "TrimAudioDuration"
+      },
+      "widgets_values": [
+        0.0,
+        10.0
+      ],
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "type": "CreateVideo",
+      "pos": [
+        2750,
+        1450
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24,
+        8
+      ],
+      "widgets_values_named": {
+        "fps": 24,
+        "bit_depth": 8
+      },
+      "title": "RAW · видео H3 без замены кадра 0"
+    },
+    {
+      "id": 205,
+      "type": "SaveVideo",
+      "pos": [
+        3250,
+        1450
+      ],
+      "size": [
+        1380,
+        970
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 27
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/photo-text/PT002_RAW_243frames",
+        "mp4",
+        "h264"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/MiniMax_H3",
+        "format": "auto",
+        "codec": "auto"
+      },
+      "title": "Сохранить RAW · 243 кадра"
+    }
+  ],
+  "links": [
+    [
+      1,
+      130,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ],
+    [
+      2,
+      125,
+      0,
+      122,
+      0,
+      "LATENT"
+    ],
+    [
+      3,
+      119,
+      0,
+      122,
+      1,
+      "VAE"
+    ],
+    [
+      4,
+      127,
+      0,
+      124,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      129,
+      0,
+      125,
+      0,
+      "NOISE"
+    ],
+    [
+      6,
+      126,
+      0,
+      125,
+      1,
+      "GUIDER"
+    ],
+    [
+      7,
+      123,
+      0,
+      125,
+      2,
+      "SAMPLER"
+    ],
+    [
+      8,
+      124,
+      0,
+      125,
+      3,
+      "SIGMAS"
+    ],
+    [
+      9,
+      136,
+      1,
+      125,
+      4,
+      "LATENT"
+    ],
+    [
+      10,
+      127,
+      0,
+      126,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      136,
+      0,
+      126,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      202,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      203,
+      0,
+      130,
+      1,
+      "AUDIO"
+    ],
+    [
+      14,
+      128,
+      0,
+      136,
+      0,
+      "CLIP"
+    ],
+    [
+      15,
+      119,
+      0,
+      136,
+      1,
+      "VAE"
+    ],
+    [
+      16,
+      138,
+      0,
+      136,
+      4,
+      "STRING"
+    ],
+    [
+      17,
+      200,
+      0,
+      136,
+      2,
+      "IMAGE"
+    ],
+    [
+      18,
+      125,
+      0,
+      121,
+      0,
+      "LATENT"
+    ],
+    [
+      19,
+      120,
+      0,
+      121,
+      1,
+      "VAE"
+    ],
+    [
+      20,
+      137,
+      0,
+      200,
+      0,
+      "IMAGE"
+    ],
+    [
+      21,
+      122,
+      0,
+      201,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      200,
+      0,
+      202,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      201,
+      0,
+      202,
+      1,
+      "IMAGE"
+    ],
+    [
+      24,
+      121,
+      0,
+      203,
+      0,
+      "AUDIO"
+    ],
+    [
+      25,
+      122,
+      0,
+      204,
+      0,
+      "IMAGE"
+    ],
+    [
+      26,
+      121,
+      0,
+      204,
+      1,
+      "AUDIO"
+    ],
+    [
+      27,
+      204,
+      0,
+      205,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

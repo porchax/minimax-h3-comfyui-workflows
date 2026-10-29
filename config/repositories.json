@@ -1,0 +1,172 @@
+{
+  "comfyui": {
+    "repository": "https://github.com/Comfy-Org/ComfyUI",
+    "revision": "0df1646a9cd71d4c990a87014fb37797a2956ead"
+  },
+  "custom_nodes": [
+    {
+      "name": "ComfyUI-KJNodes",
+      "repository": "https://github.com/kijai/ComfyUI-KJNodes",
+      "revision": "b5316a9e247338dc1460df8e4d01e906c566299c",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI-VideoHelperSuite",
+      "repository": "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite",
+      "revision": "4d907bee61e92c2e65af3bd6383a4e4d356126d1",
+      "profiles": [
+        "tested",
+        "full"
+      ]
+    },
+    {
+      "name": "rgthree-comfy",
+      "repository": "https://github.com/rgthree/rgthree-comfy",
+      "revision": "218d6347dac5b6499ae56dbfeb25cbb6dd203ac5",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "Goohaitools-comfyui",
+      "repository": "https://github.com/goohai/Goohaitools-comfyui",
+      "revision": "3beedd4d4bab28d941a1bdb0113d7800081455a8",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI_essentials",
+      "repository": "https://github.com/cubiq/ComfyUI_essentials",
+      "revision": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI-Custom-Scripts",
+      "repository": "https://github.com/pythongosssss/ComfyUI-Custom-Scripts",
+      "revision": "609f3afaa74b2f88ef9ce8d939626065e3247469",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI-Easy-Use",
+      "repository": "https://github.com/yolain/ComfyUI-Easy-Use",
+      "revision": "b0b47ca1372117fce575d9e744655344ebff6bef",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "Comfyui-Resolution-Master",
+      "repository": "https://github.com/Azornes/Comfyui-Resolution-Master",
+      "revision": "108d6eb11e24cd1aa59f4f86207723bc63d7deba",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "CRT-Nodes",
+      "repository": "https://github.com/PGCRT/CRT-Nodes",
+      "revision": "4fd8825a0aaba3c9336e9f9a7d3e7b96e04660e5",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI_Comfyroll_CustomNodes",
+      "repository": "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes",
+      "revision": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "was-node-suite-comfyui",
+      "repository": "https://github.com/WASasquatch/was-node-suite-comfyui",
+      "revision": "7f30cf0f8fa62237900f21772857f1ec8014a538",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI_LayerStyle",
+      "repository": "https://github.com/chflame163/ComfyUI_LayerStyle",
+      "revision": "51977b27869af9369e3d11a75d6fe8eb706f9821",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "RES4LYF",
+      "repository": "https://github.com/ClownsharkBatwing/RES4LYF",
+      "revision": "56e44755d866c87ff9cb4b6608c8e42155db6ecc",
+      "profiles": [
+        "tested",
+        "full"
+      ],
+      "sparse_exclude": [
+        "example_workflows",
+        "workflows"
+      ]
+    },
+    {
+      "name": "comfyui-vrgamedevgirl",
+      "repository": "https://github.com/vrgamegirl19/comfyui-vrgamedevgirl",
+      "revision": "4008c1c377247cfad4d9ccda6c8de68848885b17",
+      "profiles": [
+        "full"
+      ],
+      "sparse_exclude": [
+        "Workflows",
+        "docs",
+        "tests",
+        "LUTS"
+      ]
+    },
+    {
+      "name": "ComfyUI-Sapiens2",
+      "repository": "https://github.com/kijai/ComfyUI-Sapiens2",
+      "revision": "5090003002b66cab52565cdac765d0a9e1ef69c2",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "comfyui-minimax-h3-audio-T8",
+      "repository": "https://github.com/T8mars/comfyui-minimax-h3-audio-T8",
+      "revision": "71059af042f33de6d86749abfbc602cd1cb7cba7",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI_Seed-VC",
+      "repository": "https://github.com/billwuhao/ComfyUI_Seed-VC",
+      "revision": "02c0cb8b05121dd9e391b4287c8e28e0eb4e79a4",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "Nvidia_RTX_Nodes_ComfyUI",
+      "repository": "https://github.com/Comfy-Org/Nvidia_RTX_Nodes_ComfyUI",
+      "revision": "38d790ded00650681fa3645362efe28c8560cf40",
+      "profiles": [
+        "full"
+      ]
+    },
+    {
+      "name": "ComfyUI-RH-DLSS5",
+      "repository": "https://github.com/RH-RunningHub/ComfyUI-RH-DLSS5",
+      "revision": "71ab1060865ea781c7f4a8b7c0c79600f51b6617",
+      "profiles": [
+        "full"
+      ]
+    }
+  ]
+}

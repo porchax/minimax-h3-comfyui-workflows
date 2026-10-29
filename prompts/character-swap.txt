@@ -1,0 +1,26 @@
+subject_definitions:
+<Subject 1> is the adult blonde woman in <Picture 1>, the photograph where she wears a grey beanie. This is the highest-priority facial identity reference: preserve her face shape, eyes, nose, lips and skin tone. Do not copy the beanie, coat, scarf or outerwear. Her blonde hair is uncovered in the output, with its length and appearance supported by <Picture 2> and <Picture 3>.
+<Picture 2> shows the same woman standing in a red dress and is a supplementary physical-appearance and blonde-hair reference only. It must not override the primary face from <Picture 1>.
+<Picture 3> shows the same woman in profile and is a supplementary facial structure reference only. Do not copy the glass, restaurant, clothing or phone interface.
+All photographs define appearance only. Their poses, expressions, lighting, backgrounds, clothes and screenshot overlays are excluded.
+<Video 1> defines the source performance, movement, timing, camera, framing, clothing, environment and lighting.
+<Audio 1> is the synchronized soundtrack from <Video 1>.
+
+summary:
+[video editing + reference generation + audio reuse] Replace the main person in <Video 1> with <Subject 1>. Keep the source action, camera, composition, wardrobe, background and lighting.
+
+retention_analysis:
+<Picture 1>: attribute_transfer — primary facial identity only, excluding headwear and clothing.
+<Picture 2>: attribute_transfer — supplementary physical appearance and blonde hair only.
+<Picture 3>: attribute_transfer — supplementary profile structure only.
+<Video 1>: partially_preserved — replace the main person's identity while preserving the performance and scene.
+<Audio 1>: fully_copy — preserve the synchronized source soundtrack.
+
+detailed_description:
+[Shot 1] One uninterrupted landscape talk-show shot. Replace only the seated brunette guest with <Subject 1>, maintaining the blonde woman's facial identity and naturally loose blonde hair in every frame. Follow the supplied segment of <Video 1> throughout: the woman talks and gestures with both hands, smiles, briefly leans forward while laughing, then straightens and continues her animated explanation. Preserve the exact source timing, head turns, eye direction, hand gestures and mouth movement. Keep the source black thin-strap dress and necklace, the chair, night city backdrop, studio furniture, camera position and lighting. The woman remains seated and visible from the first frame; do not add a reveal or cut. Do not reproduce the original brunette's face, bangs or dark hair. Do not transfer the red dress, beanie, coat, wine glass, restaurant or backgrounds from the photos. Keep any other people unchanged. Preserve natural anatomy, stable facial features and consistent clothing. Do not introduce extra people, text, subtitles, logos, phone status bars or watermarks.
+
+overall_soundscape:
+Preserve <Audio 1> synchronized with the source performance.
+
+non_diegetic_music:
+Keep any existing source music unchanged. Do not add music.
